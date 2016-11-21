@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.expand_path("../../lib", __FILE__))
+
+require "menthol"
+
+profile = Menthol::Profile.configure(File.expand_path("~/.mentholrc"))
+
+case ARGV.first
+when "sync"
+  profile.sync_all!
+
+  profile.providers.each do |provider|
+    provider.accounts.each do |account|
+      puts ["===", account.provider, "|", account.name, "==="].join(" ")
+      puts account.amount.format
+    end
+  end
+
+  puts "=== Total ==="
+  puts profile.amount.format
+else
+  puts "usage: menthold COMMAND"
+end
+
+exit 0
