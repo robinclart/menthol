@@ -31,10 +31,12 @@ This library currently support:
   - Local (the amount must be given in the configuration file as the
     smallest currency subunit)
 
-You'll need to instal the `watir` gem. You'll also need Chrome installed and
-`chrome-webdriver` somewhere on your PATH.
+You'll also need Chrome installed and [chrome-webdriver][1] somewhere on
+your PATH.
 
 TODO:
 
   - store accounts in redis
   - add web server to display balances and their history
+
+[1]: https://sites.google.com/a/chromium.org/chromedriver/downloads
