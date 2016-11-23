@@ -2,10 +2,16 @@
 
 **Warning**: This project is a work in progress.
 
+Install with:
+
+```
+gem install menthol
+```
+
 Menthol is a web scraper that fetch your Thai bank account balances and sum
 them for you in your terminal.
 
-Store your configuration under `~/.mentholrc` and run with `exe/mentholrc sync`.
+Store your configuration under `~/.mentholrc` and run with `mentholrc fetch`.
 
 Here's a sample `~/.mentholrc` configuration file:
 
@@ -34,9 +40,6 @@ This library currently support:
 You'll also need Chrome installed and [chrome-webdriver][1] somewhere on
 your PATH.
 
-TODO:
-
-  - store accounts in redis
-  - add web server to display balances and their history
+If you run on a linux box in only a terminal you can install the optional `headless` gem and let it run without the need for a screen to be attached.
 
 [1]: https://sites.google.com/a/chromium.org/chromedriver/downloads
