@@ -23,7 +23,7 @@ when "sync"
   profile.providers.each do |provider|
     provider.accounts.each do |account|
       accounts.push({
-        name:     account.name,
+        name:     "#{provider.name} #{account.name}",
         amount:   account.amount.fractional,
         currency: account.amount.currency.iso_code,
       })
