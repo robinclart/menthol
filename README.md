@@ -11,7 +11,7 @@ gem install menthol
 Menthol is a web scraper that fetch your Thai bank account balances and sum
 them for you in your terminal.
 
-Store your configuration under `~/.mentholrc` and run with `mentholrc fetch`.
+Store your configuration under `~/.mentholrc` and run with `menthol fetch`.
 
 Here's a sample `~/.mentholrc` configuration file:
 
