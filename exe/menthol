@@ -15,7 +15,7 @@ if defined?(Headless)
 end
 
 case ARGV.first
-when "sync"
+when "fetch"
   profile.sync_all!
 
   accounts = []
