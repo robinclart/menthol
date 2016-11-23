@@ -4,21 +4,45 @@ require "menthol"
 
 profile = Menthol::Profile.configure(File.expand_path("~/.mentholrc"))
 
+begin
+  require "headless"
+rescue LoadError
+end
+
+if defined?(Headless)
+  headless = Headless.new
+  headless.start
+end
+
 case ARGV.first
 when "sync"
   profile.sync_all!
 
+  accounts = []
+
   profile.providers.each do |provider|
     provider.accounts.each do |account|
-      puts ["===", account.provider, "|", account.name, "==="].join(" ")
-      puts account.amount.format
+      accounts.push({
+        name:     account.name,
+        amount:   account.amount.fractional,
+        currency: account.amount.currency.iso_code,
+      })
     end
   end
 
-  puts "=== Total ==="
-  puts profile.amount.format
+  puts(JSON.pretty_generate({
+    accounts: accounts,
+    total: {
+      amount:   profile.amount.fractional,
+      currency: profile.amount.currency.iso_code,
+    }
+  }) << "\n")
 else
   puts "usage: menthold COMMAND"
+end
+
+if defined?(Headless)
+  headless.destroy
 end
 
 exit 0
