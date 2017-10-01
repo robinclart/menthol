@@ -6,22 +6,14 @@ module Menthol
     private
 
     def login_url
-      "https://online.kasikornbankgroup.com/K-Online/preLogin/popupPreLogin.jsp?lang=en&type="
-    end
-
-    def skip_login_popup
-      button = browser.input(css: "div[align=center] input")
-      button.wait_until_present
-      button.click
-      button.wait_while_present
+      "https://online.kasikornbankgroup.com/K-Online/login.jsp?lang=en&type="
     end
 
     def login
-      skip_login_popup
       submit_credentials({
         username: "userName",
         password: "password",
-        button:   browser.image(name: "loginBtn"),
+        button:   browser.button(id: "loginBtn"),
       })
     end
 

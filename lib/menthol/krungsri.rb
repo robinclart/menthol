@@ -28,7 +28,7 @@ module Menthol
     end
 
     def logout
-      button = browser.link(class: "header_logout menu_link_progress")
+      button = browser.link(class: ["header_logout", "menu_link_progress"])
       button.click
       button.wait_while_present
     end
