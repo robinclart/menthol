@@ -23,14 +23,15 @@ when "fetch"
   profile.providers.each do |provider|
     provider.accounts.each do |account|
       accounts.push({
-        name:     "#{provider.name} #{account.name}",
+        provider: provider.name,
+        name:     account.name,
         amount:   account.amount.fractional,
         currency: account.amount.currency.iso_code,
       })
     end
   end
 
-  puts(JSON.pretty_generate({
+  puts(JSON.generate({
     accounts: accounts,
     total: {
       amount:   profile.amount.fractional,
