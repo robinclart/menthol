@@ -29,21 +29,21 @@ module Menthol
       button.click
       button.wait_while_present
     end
-  end
 
-  def savings
-    browser.goto("https://ibanking.bangkokbank.com/workspace/16AccountActivity/wsp_AccountSummary_AccountSummaryPage.aspx")
-    cell = browser.span(id: "ctl00_ctl00_C_CW_gvDepositAccts_ctl02_lblAcctAvailBal").wait_until_present
-    cell.text
-  end
+    def savings
+      browser.goto("https://ibanking.bangkokbank.com/workspace/16AccountActivity/wsp_AccountSummary_AccountSummaryPage.aspx")
+      cell = browser.span(id: "ctl00_ctl00_C_CW_gvDepositAccts_ctl02_lblAcctAvailBal").wait_until_present
+      cell.text
+    end
 
-  def ltf
-    browser.goto("https://ibanking.bangkokbank.com/workspace/05Investment/wsp_Investment_TC.aspx")
-    button = browser.input(type: "submit", name: "ctl00$ctl00$C$CW$btnAccept")
-    button.click
-    button.wait_while_present
-    row  = browser.tr(css: "#ctl00_ctl00_C_CW_pnlMain .RowMFGridViewAll")
-    cell = row[6]
-    cell.text
+    def ltf
+      browser.goto("https://ibanking.bangkokbank.com/workspace/05Investment/wsp_Investment_TC.aspx")
+      button = browser.input(type: "submit", name: "ctl00$ctl00$C$CW$btnAccept")
+      button.click
+      button.wait_while_present
+      row  = browser.tr(css: "#ctl00_ctl00_C_CW_pnlMain .RowMFGridViewAll")
+      cell = row[6]
+      cell.text
+    end
   end
 end

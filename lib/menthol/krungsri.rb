@@ -28,15 +28,15 @@ module Menthol
       button.click
       button.wait_while_present
     end
-  end
 
-  def savings
-    cell = browser.div(css: ".myport_table_column_3 .amc")
-    cell.text
-  end
+    def savings
+      cell = browser.div(css: ".myport_table_column_3 .amc")
+      cell.text
+    end
 
-  def ltf
-    cell = browser.div(css: ".myport_table_column_3_4 .amc")
-    cell.text
+    def ltf
+      cell = browser.div(css: ".myport_table_column_3_4 .amc")
+      cell.text
+    end
   end
 end
