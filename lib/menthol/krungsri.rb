@@ -18,12 +18,8 @@ module Menthol
 
     def find_amount(name)
       case name
-      when "Savings"
-        cell = browser.div(css: ".myport_table_column_3 .amc")
-        cell.text
-      when "LTF"
-        cell = browser.div(css: ".myport_table_column_3_4 .amc")
-        cell.text
+      when "Savings" then savings
+      when "LTF"     then ltf
       end
     end
 
@@ -32,5 +28,15 @@ module Menthol
       button.click
       button.wait_while_present
     end
+  end
+
+  def savings
+    cell = browser.div(css: ".myport_table_column_3 .amc")
+    cell.text
+  end
+
+  def ltf
+    cell = browser.div(css: ".myport_table_column_3_4 .amc")
+    cell.text
   end
 end
