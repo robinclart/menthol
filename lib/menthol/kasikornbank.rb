@@ -17,9 +17,9 @@ module Menthol
       })
     end
 
-    def find_amount(name)
-      case name
-      when "Savings"
+    def find_amount(type)
+      case type
+      when :savings
         frame = browser.iframe(id: "ssoIFrame1")
         cell  = frame.element(class: "inner_table_right").wait_until_present
         cell.text

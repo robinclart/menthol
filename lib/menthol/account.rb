@@ -2,9 +2,10 @@ require "money"
 
 module Menthol
   class Account
-    def initialize(provider, name, amount, currency)
+    def initialize(provider, name, amount, type, currency)
       @provider = provider
       @name     = name
+      @type     = type.to_sym
       @currency = Money::Currency.find(currency)
       @amount   = Money.new(amount || 0, @currency.iso_code)
     end
@@ -14,6 +15,7 @@ module Menthol
         provider,
         configuration["name"],
         configuration["amount"],
+        configuration["type"],
         configuration["currency"]
       )
     end
@@ -21,6 +23,8 @@ module Menthol
     attr_reader :provider
 
     attr_reader :name
+
+    attr_reader :type
 
     attr_reader :amount
 

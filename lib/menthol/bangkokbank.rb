@@ -17,15 +17,16 @@ module Menthol
       })
     end
 
-    def find_amount(name)
-      case name
-      when "Savings" then savings
-      when "LTF"     then ltf
+    def find_amount(type)
+      case type
+      when :savings then savings
+      when :ltf     then ltf
       end
     end
 
     def logout
       button = browser.link(href: "javascript:IMG2_onclick();")
+      sleep 1
       button.click
       button.wait_while_present
     end
@@ -38,6 +39,7 @@ module Menthol
 
     def ltf
       browser.goto("https://ibanking.bangkokbank.com/workspace/05Investment/wsp_Investment_TC.aspx")
+      sleep 1
       button = browser.input(type: "submit", name: "ctl00$ctl00$C$CW$btnAccept")
       button.click
       button.wait_while_present

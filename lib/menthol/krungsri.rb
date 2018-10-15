@@ -16,10 +16,10 @@ module Menthol
       })
     end
 
-    def find_amount(name)
-      case name
-      when "Savings" then savings
-      when "LTF"     then ltf
+    def find_amount(type)
+      case type
+      when :savings then savings
+      when :ltf     then ltf
       end
     end
 

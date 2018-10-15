@@ -1,5 +1,4 @@
 require "money"
-require "menthol/provider"
 
 module Menthol
   class Provider
@@ -33,15 +32,22 @@ module Menthol
 
     private
 
-    def submit_credentials(username:, password:, button:)
-      browser.text_field(name: username).set(@username)
-      browser.text_field(name: password).set(@password)
+    def submit_credentials(username:, password:, button:, username_locator: :name, password_locator: :name)
+      browser.text_field(username_locator => username).set(@username)
+      browser.text_field(password_locator => password).set(@password)
       button.click
       button.wait_while_present
     end
 
     def browser
-      @browser ||= Watir::Browser.new(:chrome)
+      @browser ||= Watir::Browser.new(:chrome, {
+        headless: true,
+        options: {
+          args: [
+            "--window-size=1200x600",
+          ],
+        },
+      })
     end
 
     def login
@@ -50,7 +56,7 @@ module Menthol
 
     def synchronize_accounts
       @accounts.each do |account|
-        account.parse_amount(find_amount(account.name))
+        account.parse_amount(find_amount(account.type))
       end
     end
 

@@ -25,6 +25,7 @@ when "fetch"
       accounts.push({
         provider: provider.name,
         name:     account.name,
+        type:     account.type,
         amount:   account.amount.fractional,
         currency: account.amount.currency.iso_code,
       })
